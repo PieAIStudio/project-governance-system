@@ -3,13 +3,13 @@ required:
   doc_gov: true
   ssot: true
   ai_in_the_loop: true
-  routing: routing/engineering-task-routing.md
+  agents_routing: docs/governance/agents-routing/engineering-runtime-v0.9.md
   current_work: docs/reference/execution/current-work.md
 optional:
   directed_development: integrations/directed-development.md
   superpowers: integrations/superpowers.md
 project_local_required:
-  - governance/best-practice-for-this-project.md
+  - docs/policy/best-practice-for-this-project.md
   - AGENTS.md lane summary
   - verification command ladder
   - current runtime truth hierarchy

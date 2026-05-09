@@ -24,10 +24,13 @@ Use this decision tree before moving a rule from a project into this repository.
 
 ## Core
 
-Move to `packages/doc-gov/` or `starter/` when the rule is true for most projects.
+Move to `docs/governance/`, `packages/doc-gov/`, or `starter/` when the rule is
+true for most projects and belongs to the governance system itself.
 
 Examples:
 
+- SSOT documentation behavior
+- agents-routing rules
 - document status lifecycle
 - frontmatter schema
 - forbidden temporary filenames
@@ -36,13 +39,12 @@ Examples:
 
 ## Shared Rule
 
-Move to `shared-rules/` when the rule is project-agnostic AI behavior.
+Move to `shared-rules/` when the rule is project-agnostic AI working behavior,
+but not part of the governance system's core structure.
 
 Examples:
 
-- SSOT documentation behavior
 - AI-in-the-Loop evidence loop
-- task routing algorithm
 - visual communication conventions
 
 ## Profile

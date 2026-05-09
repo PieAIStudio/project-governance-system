@@ -6,7 +6,7 @@ Central reusable pieces:
 
 - doc-gov lifecycle with `completed`
 - SSOT and AI-in-the-Loop
-- doc-only routing
+- doc-only agents routing
 - current work index when helpful
 
 PieIP-local pieces:
@@ -16,4 +16,4 @@ PieIP-local pieces:
 - approval boundaries
 - archive/delete policy
 
-PieIP should not install engineering task routing, Directed Development, or Superpowers TDD by default.
+PieIP should not install engineering-runtime agents routing, Directed Development, or Superpowers TDD by default.

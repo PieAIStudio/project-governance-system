@@ -16,7 +16,7 @@ export interface LinkCheckResult {
   issues: LinkIssue[];
 }
 
-const CURRENT_MARKDOWN_ROOTS = ['AGENTS.md', 'README.md', 'docs', 'governance'] as const;
+const CURRENT_MARKDOWN_ROOTS = ['AGENTS.md', 'README.md', 'docs'] as const;
 
 const CURRENT_DOC_DIR_PREFIXES = [
   'docs/canon/',
@@ -95,17 +95,16 @@ function walkMarkdown(rootDir: string, dir: string): string[] {
 
 function shouldSkipTree(repoPath: string): boolean {
   if (repoPath.startsWith('docs/archive/')) return true;
-  if (repoPath.startsWith('governance/shared-rules/')) return true;
-  if (repoPath === 'governance/MANIFEST.yml') return true;
+  if (repoPath.startsWith('docs/governance/templates/')) return true;
+  if (repoPath === 'docs/governance/MANIFEST.yml') return true;
   return false;
 }
 
 function shouldIncludeSource(repoPath: string): boolean {
   if (repoPath.startsWith('docs/')) {
-    if (repoPath === 'docs/README.md') return false;
+    if (repoPath.startsWith('docs/governance/')) return true;
     return CURRENT_DOC_DIR_PREFIXES.some((prefix) => repoPath.startsWith(prefix));
   }
-  if (repoPath.startsWith('governance/')) return true;
   return false;
 }
 
@@ -134,7 +133,7 @@ function localTargetExists(rootDir: string, sourcePath: string, target: string):
 
   const candidates = [resolved];
   if (!extname(resolved)) {
-    candidates.push(`${resolved}.md`, join(resolved, 'README.md'));
+    candidates.push(`${resolved}.md`);
   }
   return candidates.some((candidate) => existsSync(candidate));
 }

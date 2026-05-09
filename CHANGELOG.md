@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0 - 2026-05-09
+
+- Absorbed SSOT rules into `docs/governance/ssot-v0.9.md`.
+- Moved reusable task routing into `docs/governance/agents-routing/*-v0.9.md`.
+- Added router integrity checks for central and downstream project routers.
+- Added default document templates for all doc-gov creatable document types.
+- Clarified that `docs/governance/` is for governance core, while
+  `docs/policy/` is for project AI/development policy.
+- Reworked starter paths so downstream projects can adopt the same boundary
+  without root-level `governance/` or non-root `README.md` files.
+
 ## 0.1.0 - 2026-05-06
 
 - Seeded central project governance system from the Supa/PieFlow doc-gov implementation.

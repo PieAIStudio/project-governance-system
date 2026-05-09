@@ -38,8 +38,21 @@ pnpm doc-gov links
 pnpm doc-gov router-check
 ```
 
-`router-check` is intentionally thin: it verifies that this upstream repo still connects
-`AGENTS.md`, `routing/`, `profiles/`, and `integrations/superpowers.md` in the expected order.
+`init` creates the directory skeleton and writes default templates under
+`docs/governance/templates/`, so `doc-gov init` followed by
+`doc-gov new spec test-spec` is a supported first-user path.
+
+`router-check` is intentionally thin:
+
+- In this upstream repo, it verifies that `AGENTS.md`,
+  `docs/governance/agents-routing/`, `profiles/`, and
+  `integrations/superpowers.md` stay connected in the expected order.
+- In a downstream project, it verifies the project router block,
+  `docs/governance/ssot-v0.9.md`, the selected agents-routing file, and old
+  shared SSOT/task-routing leftovers.
+- It also checks that local paths written in backticks inside `AGENTS.md` can
+  actually be opened, which catches stale startup instructions early.
+
 It does not choose a workflow for a specific task.
 
 ## Build

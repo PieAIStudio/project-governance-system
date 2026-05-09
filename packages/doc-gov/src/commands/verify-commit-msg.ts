@@ -91,11 +91,10 @@ function escapeRegex(s: string): string {
 
 function isGovernedMarkdownPath(path: string): boolean {
   if (!/\.md$/.test(path)) return false;
+  if (path.startsWith('docs/governance/templates/')) return false;
+  if (path === 'docs/governance/MANIFEST.yml') return false;
   if (path.startsWith('docs/')) return true;
-  if (!path.startsWith('governance/')) return false;
-  if (path.startsWith('governance/templates/')) return false;
-  if (path.startsWith('governance/shared-rules/')) return false;
-  return true;
+  return false;
 }
 
 function readHeadFrontmatter(

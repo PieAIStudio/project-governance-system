@@ -28,7 +28,7 @@ The system is justified because it replaces repeated project-by-project reinvent
 
 - one lifecycle
 - one doc-gov core
-- two routing modes
+- two agents-routing modes
 - one current work convention
 - optional workflow integrations
 
@@ -46,8 +46,9 @@ The system is justified because it replaces repeated project-by-project reinvent
 | --- | --- |
 | Central repo grows into a bureaucracy | Apply the cut line: only upstream rules that reduce repeated confusion in at least two projects |
 | Projects drift from central core | Use explicit AI-assisted sync until `doc-gov migrate` exists |
-| Users confuse task routing and current work | Use separate names: routing files vs `current-work.md` |
+| Users confuse agent routing and current work | Use separate names: `agents-routing` files vs `current-work.md` |
 | Doc-only projects get engineering ceremony | Keep `doc-only` separate and exclude DD/Superpowers by default |
+| Doc-gov swallows product artifacts | Govern `docs/**` by default; require explicit opt-in for extra governed roots |
 
 ## Current Verdict
 

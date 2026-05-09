@@ -1,6 +1,6 @@
 {
   "name": "@pieai/doc-gov",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cross-project documentation governance CLI for PieAI projects.",
   "license": "MIT",
   "author": "PieAI <PIEAI@hotmail.com>",
@@ -14,7 +14,7 @@
   },
   "files": [
     "dist",
-    "README.md",
+    "cli-guide.md",
     "src"
   ],
   "type": "module",

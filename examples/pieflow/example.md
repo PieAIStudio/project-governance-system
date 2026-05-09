@@ -6,7 +6,7 @@ Central reusable pieces:
 
 - doc-gov lifecycle with `completed`
 - current work index
-- engineering task routing
+- engineering-runtime agents routing
 - Directed Development for mixed product/runtime work
 - Superpowers integration for planning, TDD, debugging, and verification
 

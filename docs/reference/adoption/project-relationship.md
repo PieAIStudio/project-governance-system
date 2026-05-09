@@ -26,11 +26,11 @@ This file answers the most important beginner question:
 
 ## Short Answer
 
-The central repo owns the **engine**. Each project owns its **local game content**.
+The central repo owns the **engine**. Each project owns its **local product content**.
 
 | Thing | Owner |
 | --- | --- |
-| Status lifecycle, document types, CLI checks, templates | `project-governance-system` |
+| Status lifecycle, document types, SSOT, agents routing, CLI checks, templates | `project-governance-system` |
 | Supa Phase03 plans, Boss Race canon, game runtime rules | Supa |
 | PieFlow product truth, connector rules, browser lanes | PieFlow |
 | PieIP character/script/asset governance | PieIP |
@@ -48,12 +48,18 @@ Because project governance has two kinds of files:
 1. **Shared/core files** that can be linked or packaged.
 2. **Project-local files** that must stay local.
 
-Symlinking the whole `governance/` folder would be wrong because Supa and PieFlow need different lane profiles. The safe rule:
+The old `governance/` folder mixed both kinds. The clearer split is:
+
+- `docs/governance/` contains doc-system rules, SSOT, agents-routing, document types, templates, and manifest.
+- `docs/policy/` contains project-local AI development policy, lane wording, proof commands, and truth hierarchy.
+
+Symlinking or copying the whole policy layer would be wrong because Supa and PieFlow need different local lane profiles. The safe rule:
 
 - shared rules may be symlinked
 - doc-gov core should become an installed/copied package
 - project profiles are templates
-- project-local best-practice files remain local
+- project-local best-practice files remain in each project's `docs/policy/`
+- product artifacts outside `docs/**` stay in the product package unless a project explicitly opts them into doc-gov
 
 ## How Supa Improvements Flow Upstream
 
@@ -80,9 +86,10 @@ Use an explicit migration task:
    - PieFlow: `profiles/engineering-runtime/`
    - PieIP: `profiles/doc-only/`
 2. Compare local `tools/doc-gov` against `packages/doc-gov`.
-3. Compare local starter/governance docs against `starter/`.
-4. Compare local shared rules against `shared-rules/`.
-5. Keep project-local docs local.
-6. Run project validation.
+3. Compare local `docs/governance/` and `docs/policy/` starter docs against `starter/`.
+4. Compare selected local agents-routing against `docs/governance/agents-routing/`.
+5. Compare local shared AI work rules against `shared-rules/`.
+6. Keep project-local docs and product artifacts local.
+7. Run project validation.
 
 This is AI-assisted comparison now. Later it can become `doc-gov migrate`.

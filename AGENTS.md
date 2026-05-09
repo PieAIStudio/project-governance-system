@@ -1,19 +1,25 @@
 # Project Governance System AI Router
 
+## PGS Router Block
+
+<!-- PGS-ROUTER:BEGIN v0.9 -->
+
 ## Purpose
 
-This repository is the upstream source for PieAI documentation governance, task routing, and workflow integration profiles.
+This repository is the upstream source for PieAI documentation governance, agents routing, and workflow integration profiles.
 
 ## Read First
 
-1. `README.md`
-2. `docs/policy/design-principles.md`
-3. `docs/reference/adoption/project-relationship.md`
-4. `docs/policy/sync-strategy.md`
-5. `docs/reference/adoption/adoption-playbook.md`
-6. For routing/profile work, also read:
-   - `routing/engineering-task-routing.md`
-   - `routing/doc-only-routing.md`
+`README.md` is the human-facing project introduction. Do not use it as the default AI startup path unless the task is about project positioning, public explanation, or the README itself.
+
+1. All Markdown files directly under `docs/policy/`.
+2. `docs/governance/boundary.md`
+3. `docs/governance/ssot-v0.9.md`
+4. `starter/docs/governance/doc-agent-rules.md` if working on starter documentation governance.
+5. `starter/docs/governance/doc-types.md` if working on document schema or placement.
+6. For agents-routing/profile work, also read:
+   - `docs/governance/agents-routing/engineering-runtime-v0.9.md`
+   - `docs/governance/agents-routing/doc-only-v0.9.md`
    - `integrations/superpowers.md`
    - `integrations/directed-development.md`
    - `profiles/engineering-runtime/`
@@ -26,6 +32,10 @@ This repository is the upstream source for PieAI documentation governance, task 
 - Do not vendor the Superpowers plugin body.
 - Directed Development is optional and trigger-based, not a default ceremony.
 - Core lifecycle/schema/routing changes belong here first, then projects sync from here.
+- Keep `docs/governance/` for governance core rules, SSOT, agents-routing, templates, and manifest; keep project AI development policy in `docs/policy/`.
+- Project Governance System governs `docs/**` and AI entry files by default. Do not move product artifacts, prompts, generated media, runtime notes, or project-package Markdown into `docs/**` unless the project explicitly opts them into doc-gov.
+
+<!-- PGS-ROUTER:END -->
 
 ## Current Profiles
 
@@ -41,8 +51,14 @@ For CLI changes:
 ```bash
 pnpm install
 pnpm typecheck
+pnpm test
 pnpm build
 node packages/doc-gov/dist/cli.js router-check
+node packages/doc-gov/dist/cli.js check
+node packages/doc-gov/dist/cli.js scan --check
+node packages/doc-gov/dist/cli.js links
+node packages/doc-gov/dist/cli.js audit
+git diff --check
 ```
 
 For docs/profile changes, inspect links and keep the README/design-principles consistent.

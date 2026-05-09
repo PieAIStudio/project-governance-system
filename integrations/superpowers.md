@@ -16,7 +16,7 @@ Superpowers owns engineering workflows such as:
 Project Governance System owns:
 
 - documentation lifecycle
-- task routing
+- agents routing
 - current work index conventions
 - shared AI evidence rules
 
@@ -32,7 +32,7 @@ Durable outputs should map back to the project's doc-gov layers:
 
 ## Execution Order
 
-Task routing classifies first. Superpowers executes inside the selected lane.
+Agents routing classifies first. Superpowers executes inside the selected lane.
 
 ```mermaid
 flowchart TD
@@ -46,3 +46,7 @@ flowchart TD
 ```
 
 If Superpowers suggests a default location such as `docs/superpowers/**`, project instructions may override that location. The durable project record should still land in the governed doc-gov layer unless the project has explicitly adopted a separate Superpowers document tree.
+
+Host-specific files such as `CLAUDE.md` may include Superpowers skill routing
+text. That text is an adapter. It must not replace the project `AGENTS.md`
+router or run before the Project Governance System routing block.

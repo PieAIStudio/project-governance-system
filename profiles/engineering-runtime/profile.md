@@ -5,12 +5,12 @@ Use for code-heavy projects: apps, games, runtimes, services, browser products, 
 ## Includes
 
 - `packages/doc-gov`
-- `shared-rules/ssot.md`
+- `docs/governance/ssot-v0.9.md`
 - `shared-rules/ai-in-the-loop.md`
-- `routing/engineering-task-routing.md`
+- `docs/governance/agents-routing/engineering-runtime-v0.9.md`
 - `integrations/superpowers.md`
 - `integrations/directed-development.md`
-- starter docs/governance templates
+- starter `docs/governance/` and `docs/policy/` templates
 
 ## Requires Project-Local Rules
 
@@ -28,3 +28,10 @@ Each project must define:
 - stack-specific rules
 - game/app-specific lane wording
 - Superpowers plugin body
+
+## Automation Boundary
+
+This profile is a human/AI adoption contract. The CLI currently validates the
+resulting project shape, but it does not consume this file as an installable
+image. Until package/profile installation is deliberately added, use
+`starter/`, this profile, and `manifest.yml` as the reference checklist.

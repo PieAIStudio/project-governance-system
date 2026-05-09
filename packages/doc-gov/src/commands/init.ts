@@ -1,5 +1,6 @@
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { ensureDefaultTemplates } from '../core/templates';
 
 /**
  * Lightweight init: creates the directory skeleton and prints next steps.
@@ -16,9 +17,10 @@ export function runInit(args: string[]): number {
   const root = process.cwd();
 
   const dirs = [
-    'governance',
-    'governance/templates',
     'docs',
+    'docs/governance',
+    'docs/governance/agents-routing',
+    'docs/governance/templates',
     'docs/policy',
     'docs/decisions',
     'docs/specs/active',
@@ -47,15 +49,26 @@ export function runInit(args: string[]): number {
     if (!existsSync(keep)) writeFileSync(keep, '');
   }
 
-  console.log(`doc-gov init: ${created} directories created (existing dirs left untouched).`);
+  const templatesCreated = ensureDefaultTemplates(root);
+
+  console.log(
+    `doc-gov init: ${created} directories created, ${templatesCreated} templates created (existing files left untouched).`
+  );
   console.log(`\nNext steps for a brand-new project:`);
-  console.log(`  1. Copy the needed files from project-governance-system/starter/.`);
-  console.log(`  2. Pick a profile: profiles/engineering-runtime or profiles/doc-only.`);
-  console.log(`  3. Stage 0: either sync a local tools/doc-gov copy from packages/doc-gov`);
+  console.log(`  1. Copy starter/AGENTS.template.md to AGENTS.md and fill the project name.`);
+  console.log(`  2. Copy starter/docs/governance/boundary.md, ssot-v0.9.md,`);
+  console.log(`     doc-agent-rules.md, doc-types.md, and one agents-routing file.`);
+  console.log(`  3. Copy starter/docs/policy/best-practice-for-this-project.md and replace`);
+  console.log(`     placeholder policy with this project's real AI/development rules.`);
+  console.log(`  4. Copy starter/docs/reference/documentation-map.md and`);
+  console.log(`     starter/docs/reference/execution/current-work.md when useful.`);
+  console.log(`  5. Pick a profile: profiles/engineering-runtime or profiles/doc-only.`);
+  console.log(`  6. Stage 0: either sync a local tools/doc-gov copy from packages/doc-gov`);
   console.log(`     or run the built CLI directly while package install is not enabled.`);
-  console.log(`  4. Optional hard guardrails: add lefthook.yml and docs-check GitHub Action`);
+  console.log(`  7. Optional hard guardrails: add lefthook.yml and docs-check GitHub Action`);
   console.log(`     only after the target project has those files wired intentionally.`);
-  console.log(`  5. Add the target project's doc-gov script or package bin wiring.`);
-  console.log(`  6. Write your first ADR: doc-gov new decision adopt-doc-gov`);
+  console.log(`  8. Add the target project's doc-gov script or package bin wiring.`);
+  console.log(`  9. Validate the router: doc-gov router-check`);
+  console.log(`  10. Write your first ADR: doc-gov new decision adopt-doc-gov`);
   return 0;
 }

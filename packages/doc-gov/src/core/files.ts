@@ -2,7 +2,7 @@ import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 export function listGovernedMarkdownFiles(rootDir: string): string[] {
-  const roots = [join(rootDir, 'docs'), join(rootDir, 'governance')];
+  const roots = [join(rootDir, 'docs')];
   const files: string[] = [];
   for (const root of roots) {
     if (!existsSync(root)) continue;
@@ -27,9 +27,8 @@ function walk(rootDir: string, dir: string): string[] {
 
 function shouldSkip(repoPath: string) {
   return (
-    repoPath.startsWith('governance/templates/') ||
-    repoPath.startsWith('governance/shared-rules/') ||
-    repoPath === 'governance/MANIFEST.yml'
+    repoPath.startsWith('docs/governance/templates/') ||
+    repoPath === 'docs/governance/MANIFEST.yml'
   );
 }
 

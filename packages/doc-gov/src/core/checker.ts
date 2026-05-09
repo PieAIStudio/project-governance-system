@@ -98,6 +98,15 @@ function validateGovernedPath(path: string): DocIssue[] {
   const fileName = segments[segments.length - 1] ?? '';
   const baseName = fileName.replace(/\.md$/i, '').toLowerCase();
 
+  if (fileName.toLowerCase() === 'readme.md') {
+    issues.push({
+      file: path,
+      code: 'non-root-readme',
+      message:
+        'Governed docs must use purpose-based names, not README.md. Keep README.md as the root human introduction only.',
+    });
+  }
+
   const forbiddenFileNames = new Set([
     'temp',
     'tmp',

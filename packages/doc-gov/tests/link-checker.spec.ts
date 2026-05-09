@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
@@ -15,7 +15,7 @@ describe('checkCurrentMarkdownLinks', () => {
   it('fails current docs with broken relative links', () => {
     const root = createFixture({
       'docs/reference/architecture/tech.md':
-        '---\nid: T\ntitle: T\ntype: reference\n---\n[broken](deployment/README.md)\n',
+        '---\nid: T\ntitle: T\ntype: reference\n---\n[broken](deployment/deployment-guide.md)\n',
     });
 
     const result = checkCurrentMarkdownLinks(root);
@@ -25,9 +25,9 @@ describe('checkCurrentMarkdownLinks', () => {
       {
         file: 'docs/reference/architecture/tech.md',
         line: 6,
-        target: 'deployment/README.md',
+        target: 'deployment/deployment-guide.md',
         message:
-          'Broken current doc link: docs/reference/architecture/tech.md:6 -> deployment/README.md',
+          'Broken current doc link: docs/reference/architecture/tech.md:6 -> deployment/deployment-guide.md',
       },
     ]);
   });
@@ -35,8 +35,8 @@ describe('checkCurrentMarkdownLinks', () => {
   it('passes current docs with valid relative links', () => {
     const root = createFixture({
       'docs/reference/architecture/tech.md':
-        '---\nid: T\ntitle: T\ntype: reference\n---\n[deployment](../deployment/README.md)\n',
-      'docs/reference/deployment/README.md': '# Deployment\n',
+        '---\nid: T\ntitle: T\ntype: reference\n---\n[deployment](../deployment/deployment-guide.md)\n',
+      'docs/reference/deployment/deployment-guide.md': '# Deployment\n',
     });
 
     const result = checkCurrentMarkdownLinks(root);
@@ -55,15 +55,10 @@ describe('checkCurrentMarkdownLinks', () => {
     expect(result.ok).toBe(true);
   });
 
-  it('does not treat shared-rule symlink bodies as current PieFlow link truth', () => {
+  it('does not treat doc-governance templates as current link truth', () => {
     const root = createFixture({
-      'external/shared-rule.md': '[shared broken](missing.md)\n',
+      'docs/governance/templates/plan.md': '[template broken](missing.md)\n',
     });
-    mkdirSync(join(root, 'governance/shared-rules'), { recursive: true });
-    symlinkSync(
-      join(root, 'external/shared-rule.md'),
-      join(root, 'governance/shared-rules/shared-rule.md')
-    );
 
     const result = checkCurrentMarkdownLinks(root);
 

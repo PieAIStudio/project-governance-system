@@ -22,6 +22,9 @@ Directed Development must not define:
 
 Those remain owned by the project and doc-gov.
 
+Agents routing decides whether this workflow applies. Directed Development does
+not replace the project router.
+
 ## Trigger
 
 Use Directed Development only when all are true:

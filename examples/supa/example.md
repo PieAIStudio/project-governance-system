@@ -6,7 +6,7 @@ Central reusable pieces:
 
 - doc-gov lifecycle with `completed`
 - SSOT and AI-in-the-Loop
-- engineering task routing
+- engineering-runtime agents routing
 - Superpowers integration
 - Directed Development integration
 

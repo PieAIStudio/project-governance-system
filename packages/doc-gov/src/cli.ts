@@ -62,7 +62,7 @@ function printHelp(): void {
   console.log('');
   console.log('Commands:');
   console.log('  check                       Validate frontmatter, status, canonical, integrity');
-  console.log('  scan [--check]              Regenerate (or verify) governance/MANIFEST.yml');
+  console.log('  scan [--check]              Regenerate (or verify) docs/governance/MANIFEST.yml');
   console.log('  audit                       Advisory health report');
   console.log('  links                       Validate current-layer local Markdown links');
   console.log('  router-check                Validate router/profile/Superpowers wiring');

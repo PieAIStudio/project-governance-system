@@ -27,8 +27,8 @@ Use this when a project wants to migrate into the Project Governance System.
 1. Pick one profile.
 2. Inventory the project's current docs/rules.
 3. Install or copy doc-gov.
-4. Add starter docs/governance files.
-5. Add the selected routing/profile rules.
+4. Add starter `docs/governance/` and `docs/policy/` files.
+5. Add the selected `docs/governance/agents-routing/` profile rule.
 6. Move current truth into the governed layers.
 7. Archive or delete old systems.
 8. Run validation.
@@ -42,7 +42,7 @@ Do not migrate by slowly adding random files. Migrate by making one clear curren
 | App / game / runtime / service / browser product | `engineering-runtime` |
 | IP / writing / research / AI media / asset library | `doc-only` |
 
-If unsure, pick `doc-only` first. Add engineering routing only when the project has real runtime/code behavior that needs lane-specific proof.
+If unsure, pick `doc-only` first. Add engineering agents routing only when the project has real runtime/code behavior that needs lane-specific proof.
 
 ## Step 2: Inventory Current Truth
 
@@ -59,10 +59,12 @@ Before moving anything, list:
 
 Current Stage 0 method:
 
-- compare or copy `packages/doc-gov/` into the target project's `tools/doc-gov/`
+- compare or sync `packages/doc-gov/` into the target project's `tools/doc-gov/`
+  as a temporary local copy
 - preserve project-local package scripts
-- ensure `completed` exists in lifecycle/schema
-- run the target project's doc-gov checks
+- run `doc-gov router-check` after the sync so stale router/profile paths fail
+  mechanically
+- treat the local copy as a downstream mirror, not an independent fork
 
 Later Stage 2 method:
 
@@ -71,6 +73,9 @@ pnpm add -D @pieai/doc-gov
 ```
 
 Do not jump to Stage 2 until package installation is deliberately enabled.
+Do not use an absolute-path script as the default for collaborators; it is fine
+for one local machine, but it is brittle once a repo moves or another person
+checks it out.
 
 ## Step 4: Add Starter Structure
 
@@ -78,10 +83,14 @@ Use `starter/` as the reference, but keep local facts local.
 
 Required concepts:
 
-- `docs/README.md`
-- `governance/agent-rules.md`
-- `governance/doc-types.md`
-- `governance/best-practice-for-this-project.md`
+- `docs/reference/documentation-map.md`
+- `docs/governance/boundary.md`
+- `docs/governance/ssot-v0.9.md`
+- `docs/governance/doc-agent-rules.md`
+- `docs/governance/doc-types.md`
+- `docs/governance/agents-routing/<selected-profile>-v0.9.md`
+- `docs/governance/templates/*.md`
+- `docs/policy/best-practice-for-this-project.md`
 - `docs/reference/execution/current-work.md`
 - `docs/plans/active/`
 - `docs/plans/completed/`
@@ -95,11 +104,11 @@ Required concepts:
 
 Add:
 
-- `routing/engineering-task-routing.md`
+- `docs/governance/agents-routing/engineering-runtime-v0.9.md`
 - `integrations/superpowers.md`
 - `integrations/directed-development.md`
 - engineering lane summary in `AGENTS.md`
-- detailed lane profile in `governance/best-practice-for-this-project.md`
+- detailed lane profile in `docs/policy/best-practice-for-this-project.md`
 
 The project must define local lanes and proof commands.
 
@@ -107,9 +116,10 @@ The project must define local lanes and proof commands.
 
 Add:
 
-- `routing/doc-only-routing.md`
-- SSOT and AI-in-the-Loop rules
-- canon/provenance/archive rules in `governance/best-practice-for-this-project.md`
+- `docs/governance/agents-routing/doc-only-v0.9.md`
+- `docs/governance/ssot-v0.9.md`
+- AI-in-the-Loop rules
+- canon/provenance/archive rules in `docs/policy/best-practice-for-this-project.md`
 
 Do not add Superpowers TDD or Directed Development by default.
 
@@ -128,7 +138,7 @@ This file answers:
 - Where are completed proof records?
 - What should a new AI session read next?
 
-This is not the task-routing algorithm.
+This is not the agents-routing algorithm.
 
 ## Step 7: Retire Old Systems
 
@@ -140,13 +150,24 @@ Old documentation systems must become one of:
 
 Do not keep old and new current surfaces alive together.
 
+Do not migrate product artifacts into `docs/**` just because they are Markdown.
+Prompts, generated media notes, project-package canon, source assets, and
+workbench files stay in their product package unless the project explicitly opts
+them into doc-gov.
+
+For the v0.9 structural migration, use
+`docs/reference/adoption/migration-v0.9.md` as the checklist.
+
 ## Step 8: Validate
 
 Minimum:
 
 ```bash
 pnpm doc-gov check
+pnpm doc-gov router-check
 pnpm doc-gov scan --check
+pnpm doc-gov links
+pnpm doc-gov audit
 git diff --check
 ```
 
@@ -159,8 +180,8 @@ If SupaChats is an app/runtime project:
 1. Pick `engineering-runtime`.
 2. Inventory existing docs and current runtime truth.
 3. Copy/sync `packages/doc-gov` into `SupaChats/tools/doc-gov` or wire the local package if package install is enabled.
-4. Add governed `docs/` and `governance/` starter files.
-5. Write `SupaChats/governance/best-practice-for-this-project.md` with SupaChats-specific truth, stack, lanes, and verification commands.
+4. Add governed `docs/governance/` and `docs/policy/` starter files.
+5. Write `SupaChats/docs/policy/best-practice-for-this-project.md` with SupaChats-specific truth, stack, lanes, and verification commands.
 6. Create `docs/reference/execution/current-work.md`.
 7. Move current plans into `docs/plans/active/`; move finished plans into `docs/plans/completed/`.
 8. Move stable product truth into `docs/canon/`; guides into `docs/reference/`; historical material into `docs/archive/`.

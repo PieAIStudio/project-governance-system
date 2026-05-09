@@ -16,13 +16,13 @@ export function buildManifest(rootDir = process.cwd()): string {
 
 export function writeManifest(rootDir = process.cwd()): void {
   const manifest = buildManifest(rootDir);
-  const path = join(rootDir, 'governance/MANIFEST.yml');
+  const path = join(rootDir, 'docs/governance/MANIFEST.yml');
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, manifest);
 }
 
 export function manifestInSync(rootDir = process.cwd()): boolean {
-  const path = join(rootDir, 'governance/MANIFEST.yml');
+  const path = join(rootDir, 'docs/governance/MANIFEST.yml');
   if (!existsSync(path)) return false;
   return (
     normalizeManifest(readFileSync(path, 'utf8')) === normalizeManifest(buildManifest(rootDir))
@@ -35,10 +35,10 @@ function normalizeManifest(value: string): string {
 
 function renderManifest(records: DocRecord[]): string {
   const lines = [
-    '# governance/MANIFEST.yml — auto-generated, DO NOT EDIT MANUALLY',
+    '# docs/governance/MANIFEST.yml — auto-generated, DO NOT EDIT MANUALLY',
     '# Regenerate: pnpm doc-gov scan',
     `generated_at: ${new Date().toISOString()}`,
-    'generator_version: doc-gov@0.1.0',
+    'generator_version: doc-gov@0.2.0',
     `docs_count: ${records.length}`,
     'docs:',
   ];

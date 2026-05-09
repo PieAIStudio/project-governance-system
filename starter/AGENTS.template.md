@@ -1,18 +1,28 @@
 # PROJECT_NAME AI Router
 
+## PGS Router Block
+
+<!-- PGS-ROUTER:BEGIN v0.9 -->
+
 ## Startup Reading
 
-1. `README.md`
-2. `AGENTS.md`
-3. `governance/agent-rules.md`
-4. `governance/doc-types.md`
-5. `governance/best-practice-for-this-project.md`
-6. `docs/README.md`
+`README.md` is the human-facing project introduction. Do not use it as the default AI startup path unless the task is about project positioning, public explanation, or the README itself.
+
+1. All Markdown files directly under `docs/policy/`.
+2. `docs/governance/boundary.md`
+3. `docs/governance/ssot-v0.9.md`
+4. `docs/governance/doc-agent-rules.md`
+5. `docs/governance/doc-types.md`
+6. The selected agents routing file:
+   - `docs/governance/agents-routing/engineering-runtime-v0.9.md`, or
+   - `docs/governance/agents-routing/doc-only-v0.9.md`
 7. `docs/reference/execution/current-work.md` when present
 
 ## Governance
 
 - Use doc-gov for governed Markdown.
+- Governed Markdown lives under `docs/**` by default.
+- Product artifacts outside `docs/**` are not governed docs unless this project explicitly opts them in.
 - Before creating docs: `pnpm doc-gov find <topic>`.
 - Before claiming doc work complete:
   - `pnpm doc-gov check`
@@ -21,10 +31,13 @@
 ## Routing
 
 - Name this project's adopted profile: `engineering-runtime` or `doc-only`.
-- Point to the chosen routing file from `project-governance-system/routing/`.
+- Point to the chosen agents-routing file from `docs/governance/agents-routing/`.
 - Engineering projects should also point to `integrations/superpowers.md` and use Superpowers inside the selected lane.
 - Doc-only projects should say that Superpowers TDD and Directed Development are not enabled by default.
+- External workflow systems such as Superpowers or GStack run inside the lane selected by this router. They must not replace this project router.
+
+<!-- PGS-ROUTER:END -->
 
 ## Upstream Rule
 
-Do not locally invent doc-gov core changes such as new document statuses, frontmatter schema, lifecycle rules, shared routing rules, or shared AI rules. If such a change seems necessary, propose it upstream in `project-governance-system` first.
+Do not locally invent doc-gov core changes such as new document statuses, frontmatter schema, lifecycle rules, shared agents-routing rules, or shared AI rules. If such a change seems necessary, propose it upstream in `project-governance-system` first.

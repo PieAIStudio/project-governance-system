@@ -25,4 +25,4 @@ flowchart LR
 
 ## Boundary
 
-This rule owns the evidence loop only. Task classification lives in routing files. Project truth lives in the project docs and runtime.
+This rule owns the evidence loop only. Task classification lives in agents-routing files. Project truth lives in the project docs and runtime.

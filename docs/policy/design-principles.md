@@ -33,7 +33,9 @@ This system exists to reduce project and AI-session cognitive load, not to creat
 
 ### 0. Govern AI Artifacts; Do Not Replace Git
 
-Git remains the file history and collaboration layer. Superpowers remains an external engineering workflow layer. This system governs the lifecycle and placement of durable AI-created project artifacts: specs, plans, decisions, references, canon, and archives.
+Git remains the file history and collaboration layer. Superpowers remains an external engineering workflow layer. This system governs the lifecycle and placement of durable AI-created governance artifacts: specs, plans, decisions, references, governed canon, and archives.
+
+It does not govern every Markdown file in a repository. Product prompts, generated media notes, runtime docs, source-package README files, and project-package canon can live outside `docs/**` when they are product artifacts rather than AI collaboration records.
 
 If a future change tries to make this repo a general project-management platform, Git replacement, or Superpowers fork, cut it back.
 
@@ -48,16 +50,16 @@ Supa's game-specific rules stay in Supa. Do not create a central `game-runtime` 
 
 ### 2. Rename "Current Router" To "Current Work"
 
-Task routing and current work are different:
+Agents routing and current work are different:
 
-- routing decides workflow depth
+- agents routing decides workflow depth
 - current work tells the agent what is active now
 
 Use `current-work.md` in starters and future migrations to avoid "two routers" confusion.
 
 ### 3. Upstream Core Changes First
 
-Do not locally invent new doc-gov statuses, schema fields, document types, shared routing semantics, or shared AI rules.
+Do not locally invent new doc-gov statuses, schema fields, document types, shared agents-routing semantics, or shared AI rules.
 
 If a project discovers a core gap, update this repo first, then sync projects from it.
 

@@ -17,7 +17,7 @@ related: []
 
 # Current Work
 
-This file is the current project work index. It is not the task-routing algorithm.
+This file is the current project work index. It is not the agents-routing algorithm.
 
 ## Current Focus
 

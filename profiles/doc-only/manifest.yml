@@ -3,16 +3,16 @@ required:
   doc_gov: true
   ssot: true
   ai_in_the_loop: true
-  routing: routing/doc-only-routing.md
+  agents_routing: docs/governance/agents-routing/doc-only-v0.9.md
   current_work: docs/reference/execution/current-work.md
 optional:
   directed_development: false
   superpowers: false
 project_local_required:
-  - governance/best-practice-for-this-project.md
+  - docs/policy/best-practice-for-this-project.md
   - canon/provenance/approval boundaries
   - archive/delete policy
 not_included:
-  - engineering task routing
+  - engineering-runtime agents routing
   - behavior-critical code lanes
   - Superpowers TDD workflow

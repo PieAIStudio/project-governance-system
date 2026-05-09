@@ -1,4 +1,26 @@
-# Engineering Task Routing
+---
+id: GOV-AGENTS-ROUTING-ENGINEERING-RUNTIME-V0-9
+title: Engineering Runtime Agents Routing v0.9
+type: policy
+status: stable
+canonical: true
+owner: human
+created: 2026-05-09
+last_reviewed: 2026-05-09
+domain: agents-routing
+tags:
+  - agents-routing
+  - engineering-runtime
+  - workflow
+pinned: true
+related:
+  - GOV-SSOT-V0-9
+  - REF-DOC-GOVERNANCE-BOUNDARY
+supersedes: []
+superseded_by: null
+---
+
+# Engineering Runtime Agents Routing v0.9
 
 Shared routing algorithm for app, game, runtime, and code-heavy projects.
 
@@ -35,7 +57,7 @@ Do not trigger DD for broad mechanical edits, renames, formatting, or ordinary d
 
 ## Project-Local Lane Profile
 
-Every engineering project must define its own lane profile in `AGENTS.md` or `governance/best-practice-for-this-project.md`.
+Every engineering project must define its own lane profile in `AGENTS.md` or `docs/policy/best-practice-for-this-project.md`.
 
 Typical lanes:
 
@@ -45,3 +67,12 @@ Typical lanes:
 - pure refactor
 
 But the shared router must not define project-specific lanes.
+
+## External Workflow Boundary
+
+This route runs before external workflow systems such as Superpowers or GStack.
+Those systems may provide skills, reviews, browser workflows, or shipping gates,
+but they execute **inside** the lane selected by this route.
+
+Host-specific files such as `CLAUDE.md` or `GEMINI.md` may adapt the route for a
+specific AI client, but they must not replace the project `AGENTS.md` route.

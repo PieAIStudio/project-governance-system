@@ -4,7 +4,7 @@ import { join } from 'node:path';
 /**
  * Type → directory and naming conventions.
  *
- * Naming rules (mirror governance/naming.yaml):
+ * Naming rules:
  *   - decision: docs/decisions/ADR-NNNN-<slug>.md, id: ADR-NNNN
  *   - spec:     docs/specs/active/SPEC-NNNN-<slug>.md, id: SPEC-NNNN
  *   - plan:     docs/plans/active/PLAN-NNNN-<slug>.md, id: PLAN-NNNN

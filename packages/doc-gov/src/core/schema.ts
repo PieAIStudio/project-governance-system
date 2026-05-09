@@ -161,13 +161,11 @@ export function validateFrontmatter(
 
 function isPathAllowedForType(path: string, type: string): boolean {
   if (
-    path.startsWith('governance/') &&
-    !path.startsWith('governance/shared-rules/') &&
-    !path.startsWith('governance/templates/')
+    path.startsWith('docs/governance/') &&
+    !path.startsWith('docs/governance/templates/')
   ) {
     return type === 'policy' || type === 'reference';
   }
-  if (path === 'docs/README.md') return type === 'reference';
   if (type === 'policy') return path.startsWith('docs/policy/');
   if (type === 'decision') return path.startsWith('docs/decisions/');
   if (type === 'spec') return path.startsWith('docs/specs/');
