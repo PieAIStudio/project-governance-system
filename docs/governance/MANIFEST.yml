@@ -1,6 +1,6 @@
 # docs/governance/MANIFEST.yml — auto-generated, DO NOT EDIT MANUALLY
 # Regenerate: pnpm doc-gov scan
-generated_at: 2026-05-09T06:32:15.312Z
+generated_at: 2026-05-09T07:40:58.807Z
 generator_version: doc-gov@0.2.0
 docs_count: 12
 docs:
@@ -86,5 +86,5 @@ docs:
     type: reference
     status: stable
     canonical: true
-    last_reviewed: 2026-05-07
+    last_reviewed: 2026-05-09
     pinned: false
