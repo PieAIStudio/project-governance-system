@@ -22,7 +22,7 @@
     "directory": "packages/doc-gov"
   },
   "bin": {
-    "doc-gov": "./dist/cli.js"
+    "doc-gov": "dist/cli.js"
   },
   "files": [
     "dist",

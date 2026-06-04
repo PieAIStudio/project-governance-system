@@ -66,15 +66,17 @@ Before publishing:
 - `dist/cli.js` is built and executable
 - `npm pack --dry-run` shows only intended files
 - maintainer is authenticated to npm
+- registry is the official npm registry, not a mirror
 - scoped publish uses public access
 
 Recommended commands:
 
 ```bash
 cd packages/doc-gov
+npm whoami --registry https://registry.npmjs.org/
 npm pack --dry-run
-npm publish --access public
-npm view @pieai/doc-gov version
+npm publish --access public --registry https://registry.npmjs.org/
+npm view @pieai/doc-gov version --registry https://registry.npmjs.org/
 ```
 
 Important: do not claim the npm package is live until `npm view @pieai/doc-gov
