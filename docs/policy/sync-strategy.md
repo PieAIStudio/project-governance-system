@@ -11,7 +11,7 @@ domain: adoption
 tags:
   - sync
   - adoption
-  - stage-0
+  - package-install
 pinned: true
 related:
   - REF-ADOPTION-PLAYBOOK
@@ -22,7 +22,8 @@ related:
 
 ## Stage 0: AI-Assisted Sync
 
-Use this now.
+Use this for projects that already have a local `tools/doc-gov` copy and should
+not be disturbed mid-flight.
 
 Projects keep local copies. An AI migration task compares the project against this repo and applies only the relevant profile.
 
@@ -63,7 +64,10 @@ pnpm add -D @pieai/doc-gov
 pnpm doc-gov check
 ```
 
-This should happen only after Supa and PieFlow have both validated the same lifecycle.
+This is now the preferred direction for new adoption work and for projects that
+can update scripts, local hooks, and CI in one deliberate change. Do not switch
+only the package command while leaving old guardrails behind; that creates a
+half-migrated project.
 
 ## Stage 3: Published Template / Init
 
@@ -74,4 +78,5 @@ pnpm dlx @pieai/doc-gov init --profile doc-only
 pnpm dlx @pieai/doc-gov init --profile engineering-runtime
 ```
 
-Do not jump here before Stage 0 and Stage 1 prove stable.
+Do not jump here before Stage 1 proves the selected profile is structurally
+ready.

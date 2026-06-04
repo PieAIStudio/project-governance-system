@@ -1,8 +1,10 @@
 # Project Governance System
 
-Central upstream for PieAI project documentation governance, agents routing, and workflow integration profiles.
+[![Docs Check](https://github.com/PieAIStudio/project-governance-system/actions/workflows/docs-check.yml/badge.svg)](https://github.com/PieAIStudio/project-governance-system/actions/workflows/docs-check.yml)
 
-This repository is not a finished public package yet. It is the **single source of upstream design** for the system currently proven in Supa and being adapted into PieFlow and PieIP.
+AI-native documentation governance, agents routing, and workflow integration profiles for projects that work with AI agents over time.
+
+This repository is the upstream home of the Project Governance System and the `@pieai/doc-gov` CLI package target. It defines the thin shared rules that PieAI projects use to keep AI-generated plans, specs, decisions, references, and routing instructions from turning into unmanaged clutter.
 
 This root README is for humans. AI agents should use `AGENTS.md` as their startup entrypoint and only read this README when the task is about project positioning, public explanation, or the README itself.
 
@@ -36,6 +38,29 @@ flowchart TD
   H --> I
   I --> J["Record governed output in doc-gov layers"]
   J --> K["Git tracks the actual file history"]
+```
+
+## Quick Start
+
+For a local checkout:
+
+```bash
+pnpm install
+pnpm build
+pnpm doc-gov doctor
+```
+
+For a project that wants to evaluate adoption without changing files:
+
+```bash
+pnpm dlx @pieai/doc-gov migrate --profile doc-only --check
+pnpm dlx @pieai/doc-gov migrate --profile engineering-runtime --check
+```
+
+If the npm package is not available in your environment yet, run the same commands from a clone:
+
+```bash
+node /path/to/project-governance-system/packages/doc-gov/dist/cli.js doctor
 ```
 
 ## Start Here By Role
@@ -91,17 +116,18 @@ Those are project-local or external systems. This repo only defines how projects
 
 ## Current Adoption Model
 
-Stage 0 is intentionally conservative:
+The system is moving from Stage 0 into package-based distribution. The safe rule is:
+use the package for the CLI, but migrate each project's files intentionally.
 
 1. This repo records the upstream contract.
-2. Projects keep their local working copies.
+2. The npm package can supply the `doc-gov` command once installed.
 3. AI-assisted migrations compare a project against the matching profile.
 4. `doc-gov migrate --profile <profile> --check` can now do the first read-only
    structural check before any sync work.
 5. `doc-gov doctor` checks whether router, docs, manifest, links, local hooks,
    and CI guardrails are actually connected.
-6. After the same lifecycle and guardrail model remain stable across more
-   projects, the package can become the install source.
+6. Downstream projects should switch from local `tools/doc-gov` copies to the
+   package only when they are ready to update their scripts and CI together.
 
 Do not silently replace project-local governance with this repo. Use the adoption guides and run each project's doc checks.
 
@@ -114,9 +140,11 @@ This repo can become a new-project starter for AI-assisted work, but only in sta
 1. Today: use it as the upstream design and compare projects against the matching profile.
 2. Now: use `doc-gov migrate --profile <profile> --check` and `doc-gov doctor`
    to find drift without changing files.
-3. Next: add a safe `migrate --apply` path only after repeated projects show
+3. Next: install `@pieai/doc-gov` as the CLI source in projects that are ready
+   to leave vendored `tools/doc-gov` copies behind.
+4. Later: add a safe `migrate --apply` path only after repeated projects show
    the same sync shape.
-4. Later: publish package and init commands for new projects.
+5. Later: publish full init profiles for new projects.
 
 Do not treat the starter as a magic install. A useful project still needs local truth: its product canon, runtime proof commands, asset provenance rules, product-package folders, and current work index. The central system supplies the governed shelves and guardrails; each project supplies the actual content.
 

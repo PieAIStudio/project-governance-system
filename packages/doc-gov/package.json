@@ -1,12 +1,24 @@
 {
   "name": "@pieai/doc-gov",
   "version": "0.3.0",
-  "description": "Cross-project documentation governance CLI for PieAI projects.",
+  "description": "AI-native documentation governance CLI for project docs, agent routing, and lifecycle checks.",
+  "keywords": [
+    "ai-agents",
+    "documentation",
+    "governance",
+    "cli",
+    "project-management",
+    "markdown"
+  ],
+  "homepage": "https://github.com/PieAIStudio/project-governance-system#readme",
+  "bugs": {
+    "url": "https://github.com/PieAIStudio/project-governance-system/issues"
+  },
   "license": "MIT",
   "author": "PieAI <PIEAI@hotmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PieAIStudio/project-governance-system",
+    "url": "git+https://github.com/PieAIStudio/project-governance-system.git",
     "directory": "packages/doc-gov"
   },
   "bin": {
@@ -14,8 +26,9 @@
   },
   "files": [
     "dist",
-    "cli-guide.md",
-    "src"
+    "README.md",
+    "LICENSE",
+    "cli-guide.md"
   ],
   "type": "module",
   "publishConfig": {
@@ -24,6 +37,7 @@
   "scripts": {
     "dev": "tsx src/cli.ts",
     "build": "node node_modules/esbuild/bin/esbuild src/cli.ts --bundle --platform=node --format=esm --target=node22 --banner:js=\"#!/usr/bin/env node\" --outfile=dist/cli.js && chmod +x dist/cli.js",
+    "prepack": "pnpm build",
     "test": "tsx --test src/**/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

@@ -57,11 +57,23 @@ test('new can use built-in fallback templates when project templates are missing
   assert.equal(checkDocs(root).ok, true);
 });
 
-function withCwd(root: string, fn: () => void): void {
+test('init next steps describe package install as the preferred CLI source', () => {
+  const root = mkdtempSync(join(tmpdir(), 'doc-gov-init-output-'));
+
+  const output = withCwd(root, () => captureConsole(() => {
+    assert.equal(runInit([]), 0);
+  }));
+
+  assert.match(output, /pnpm add -D @pieai\/doc-gov/);
+  assert.match(output, /or run this built CLI directly during local development/);
+  assert.doesNotMatch(output, /package install is not enabled/);
+});
+
+function withCwd<T>(root: string, fn: () => T): T {
   const previous = process.cwd();
   try {
     process.chdir(root);
-    fn();
+    return fn();
   } finally {
     process.chdir(previous);
   }
@@ -74,6 +86,25 @@ function withMutedConsole(fn: () => void): void {
     console.log = () => undefined;
     console.error = () => undefined;
     fn();
+  } finally {
+    console.log = originalLog;
+    console.error = originalError;
+  }
+}
+
+function captureConsole(fn: () => void): string {
+  const originalLog = console.log;
+  const originalError = console.error;
+  const lines: string[] = [];
+  try {
+    console.log = (...args: unknown[]) => {
+      lines.push(args.join(' '));
+    };
+    console.error = (...args: unknown[]) => {
+      lines.push(args.join(' '));
+    };
+    fn();
+    return lines.join('\n');
   } finally {
     console.log = originalLog;
     console.error = originalError;

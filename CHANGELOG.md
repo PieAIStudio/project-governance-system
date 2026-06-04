@@ -2,6 +2,8 @@
 
 ## 0.3.0 - 2026-06-04
 
+- Prepared the repository for public release by adding license, security,
+  contribution, package README, npm metadata, and release checklist docs.
 - Added `doc-gov doctor` to run a combined governance health check for router
   integrity, docs, manifest freshness, links, local lefthook installation, and
   CI guardrail wiring.

@@ -7,10 +7,9 @@ import { ensureDefaultTemplates } from '../core/templates';
  *
  * For the full starter (templates / agent-rules / optional hooks / optional
  * GitHub Action), use this repository's `starter/` and profile docs as the
- * upstream reference. Stage 0 target projects may still keep a local
- * `tools/doc-gov/` copy, but the source of truth is no longer Supa.
- * Phase 2 will publish a fully self-contained `npx @pieai/doc-gov init` that
- * embeds all fixtures.
+ * upstream reference. Target projects may install `@pieai/doc-gov` as the CLI
+ * source or run a locally built clone while they are migrating away from
+ * vendored `tools/doc-gov/` copies.
  */
 export function runInit(args: string[]): number {
   const force = args.includes('--force');
@@ -66,8 +65,8 @@ export function runInit(args: string[]): number {
   console.log(`     starter/docs/reference/execution/current-work.md.`);
   console.log(`     Current work is required, but it can stay very lightweight.`);
   console.log(`  5. Pick a profile: profiles/engineering-runtime or profiles/doc-only.`);
-  console.log(`  6. Stage 0: either sync a local tools/doc-gov copy from packages/doc-gov`);
-  console.log(`     or run the built CLI directly while package install is not enabled.`);
+  console.log(`  6. Install the CLI: pnpm add -D @pieai/doc-gov`);
+  console.log(`     or run this built CLI directly during local development.`);
   console.log(`  7. Optional hard guardrails: copy starter/lefthook.template.yml to`);
   console.log(`     lefthook.yml, and starter/.github/workflows/docs-check.yml to`);
   console.log(`     .github/workflows/docs-check.yml when the project is ready for gates.`);

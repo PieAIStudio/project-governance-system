@@ -1,8 +1,8 @@
 # docs/governance/MANIFEST.yml — auto-generated, DO NOT EDIT MANUALLY
 # Regenerate: pnpm doc-gov scan
-generated_at: 2026-06-04T15:06:07.329Z
+generated_at: 2026-06-04T15:25:33.963Z
 generator_version: doc-gov@0.3.0
-docs_count: 12
+docs_count: 14
 docs:
   - id: GOV-AGENTS-ROUTING-DOC-ONLY-V0-9
     path: docs/governance/agents-routing/doc-only-v0.9.md
@@ -80,6 +80,20 @@ docs:
     status: stable
     canonical: true
     last_reviewed: 2026-05-07
+    pinned: false
+  - id: REF-PUBLIC-RELEASE-CHECKLIST
+    path: docs/reference/adoption/public-release-checklist.md
+    type: reference
+    status: stable
+    canonical: true
+    last_reviewed: 2026-06-04
+    pinned: false
+  - id: REF-SITE-PUBLICATION-BRIEF
+    path: docs/reference/adoption/site-publication-brief.md
+    type: reference
+    status: stable
+    canonical: true
+    last_reviewed: 2026-06-04
     pinned: false
   - id: REF-SELF-REVIEW
     path: docs/reference/meta/self-review.md

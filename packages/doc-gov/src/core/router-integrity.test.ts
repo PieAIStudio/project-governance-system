@@ -92,7 +92,7 @@ test('fails when router text contains machine-local absolute paths', () => {
       'Read docs/governance/doc-types.md.',
       'Read docs/governance/agents-routing/doc-only-v0.9.md.',
       'Read docs/reference/execution/current-work.md.',
-      'Use /Users/yuanfei/PieAI/project-governance-system as the upstream source.',
+      'Use /Users/example/project-governance-system as the upstream source.',
       '<!-- PGS-ROUTER:END -->',
     ].join('\n')
   );
